@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title data-th-text="#{moviestore.title}"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+<p data-th-text="#{moviestore.chooseLang}"></p>
+    <div>
+        <span>
+            <a href="?lang=en" data-th-text="#{moviestore.lang.en}"></a>&nbsp;&nbsp;&nbsp;
+            <a href="?lang=fi" data-th-text="#{moviestore.lang.fi}"></a>
+        </span>
+  
+    </div>
+    
+<table class="table table-striped">
+<tr>
+<th>[[#{movieinfostore.plot}]]</th>
+<th> [[#{movieinfostore.actor}]]</th>
+<th>[[#{movieinfostore.actor2}]]</th>
+<th>[[#{movieinfostore.actor3}]]</th>
+<th>[[#{movieinfostore.actor4}]]</th>
+<th>[[#{movieinfostore.actor5}]]</th>
+</tr>
+
+<tr th:each=" movieinfolist : ${movieinfolist}">
+<td th:text="${movieinfolist.plot}"></td>
+<td th:text="${movieinfolist.actor}"></td>
+<td th:text="${movieinfolist.actor2}"></td>
+<td th:text="${movieinfolist.actor3}"></td>
+<td th:text="${movieinfolist.actor4}"></td>
+<td th:text="${movieinfolist.actor5}"></td>
+
+    
+</tr>
+</table>
+</body>
+</html>

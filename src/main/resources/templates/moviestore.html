@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title data-th-text="#{moviestore.title}"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="col-md-4">
+		<h3 data-th-text="#{moviestore.welcome}">[[${#httpServletRequest.remoteUser}]]</h3>
+	</div>
+ <p data-th-text="#{moviestore.chooseLang}"></p>
+    <div>
+        <span>
+            <a href="?lang=en" data-th-text="#{moviestore.lang.en}"></a>&nbsp;&nbsp;&nbsp;
+            <a href="?lang=fi" data-th-text="#{moviestore.lang.fi}"></a>
+        </span>
+  
+    </div>
+	<div class="col-md-4" style="padding:20px 0">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Logout/Kirjaudu Ulos" class="btn btn-sm btn-danger"></input>
+		</form>
+	</div>
+<table class="table table-striped">
+<tr>
+<th>[[#{moviestore.moviename}]]</th>
+<th> [[#{moviestore.moviedate}]]</th>
+<th>[[#{moviestore.moviecategory}]]</th>
+<th sec:authorize="hasAuthority('ADMIN')"> </th>
+</tr>
+
+<tr th:each=" movie : ${movies}">
+<td th:text="${movie.moviename}"></td>
+<td th:text="${movie.getdateString()}"></td>
+<td th:text="${movie.category} ? ${movie.category.name} : '  '"></td>
+
+<th sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${movie.id})}" class="btn btn-danger" data-th-text="#{moviestore.delete}"></a></td>
+<a href="/movieinformations" class="btn btn-info" data-th-text="#{moviesinfostore.check}"></a>
+
+</tr>
+</table>
+<a href="/add" class="btn btn-success" data-th-text="#{moviestore.add}"></a>
+<a href="/addm" class="btn btn-success" data-th-text="#{movieinfostore.add}"></a>
+</body>
+</html>

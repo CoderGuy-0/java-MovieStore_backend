@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title data-th-text="#{moviestore.title}"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+
+<p data-th-text="#{moviestore.chooseLang}"></p>
+    <div>
+        <span>
+            <a href="?lang=en" data-th-text="#{moviestore.lang.en}"></a>&nbsp;&nbsp;&nbsp;
+            <a href="?lang=fi" data-th-text="#{moviestore.lang.fi}"></a>
+        </span>
+  
+    </div>
+<div class="container">
+<h2 data-th-text="#{moviestore.add}"></h2>
+<div class="col-md-4">
+<form th:object="${movie}" th:action="@{save}" action="#" method="post">
+<label for="title" data-th-text="#{moviestore.moviename}"></label>
+<input type="text" id="moviename" th:field="*{moviename}" class="form-control"/>
+<div style="clear: both; display: block; height: 10px;"></div>
+<label for="author" data-th-text="#{moviestore.moviedate}"></label>
+<input type="text" id="date" th:field="*{date}" class="form-control"/>
+<div style="clear: both; display: block; height: 10px;"></div>
+
+<label for="categorylise" data-th-text="#{moviestore.moviecategory}"></label>
+<select id="categorylise" th:field="*{category}" class="form-control">
+       	<option th:each="categorylism: ${categories}" th:value="${categorylism.categoryid}" th:text="${categorylism.name}"></option>
+    		</select>
+			
+			<div style="clear: both; display: block; height: 10px;"></div>
+
+<input type="submit" class="btn btn-primary" value="Save/tallenna"></input>
+</form>
+</div>
+</div>
+</body>
+</html>

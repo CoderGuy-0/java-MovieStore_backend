@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title data-th-text="#{moviestore.title}"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+
+<p data-th-text="#{moviestore.chooseLang}"></p>
+    <div>
+        <span>
+            <a href="?lang=en" data-th-text="#{moviestore.lang.en}"></a>&nbsp;&nbsp;&nbsp;
+            <a href="?lang=fi" data-th-text="#{moviestore.lang.fi}"></a>
+        </span>
+  
+    </div>
+<div class="container">
+<h2 data-th-text="#{movieinfostore.add}"></h2>
+<div class="col-md-4">
+<form th:object="${movieinfolist}" th:action="@{saveinfo}" action="#" method="post">
+<label for="title" data-th-text="#{movieinfostore.plot}"></label>
+<input type="text" id="plot" th:field="*{plot}" class="form-control"/>
+<div style="clear: both; display: block; height: 10px;"></div>
+<label for="author" data-th-text="#{movieinfostore.actor}"></label>
+<input type="text" id="actor" th:field="*{actor}" class="form-control"/>
+<div style="clear: both; display: block; height: 10px;"></div>
+<label for="author" data-th-text="#{movieinfostore.actor2}"></label>
+<input type="text" id="actor2" th:field="*{actor2}" class="form-control"/>
+<div style="clear: both; display: block; height: 10px;"></div>
+<label for="author" data-th-text="#{movieinfostore.actor3}"></label>
+<input type="text" id="actor3" th:field="*{actor3}" class="form-control"/>
+<div style="clear: both; display: block; height: 10px;"></div>
+<label for="author" data-th-text="#{movieinfostore.actor4}"></label>
+<input type="text" id="actor4" th:field="*{actor4}" class="form-control"/>
+<div style="clear: both; display: block; height: 10px;"></div>
+<label for="author" data-th-text="#{movieinfostore.actor5}"></label>
+<input type="text" id="actor5" th:field="*{actor5}" class="form-control"/>
+<div style="clear: both; display: block; height: 10px;"></div>
+
+
+<input type="submit" class="btn btn-primary" value="Save/tallenna"></input>
+</form>
+</div>
+</div>
+</body>
+</html>
